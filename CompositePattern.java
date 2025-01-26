@@ -31,7 +31,7 @@ class Tractor implements Component {
     }
 }
 
-class Truck implements Component {
+class Truckk implements Component {
     private List<Component> components = new ArrayList<>();
 
     public void add(Component component) {
@@ -61,7 +61,7 @@ public class CompositePattern {
         TrailerTruck trailer = new TrailerTruck(10);
         Tractor tractor = new Tractor(8);
 
-        Truck semiTrailer = new Truck();
+        Truckk semiTrailer = new Truckk();
         semiTrailer.add(trailer);
         semiTrailer.add(tractor);
 

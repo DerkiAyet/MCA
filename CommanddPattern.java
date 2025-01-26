@@ -1,20 +1,20 @@
-interface Command {
+interface Commandd {
     void execute();
 }
 
-class User {
+class User1 {
     private String name;
 
-    public User(String name) {
+    public User1(String name) {
         this.name = name;
     }
 
-    public void sendMessage(String message, User recipient) {
+    public void sendMessage(String message, User1 recipient) {
         System.out.println(name + " sends message to " + recipient.getName() + ": " + message);
         recipient.receiveMessage(message, this);
     }
 
-    public void receiveMessage(String message, User sender) {
+    public void receiveMessage(String message, User1 sender) {
         System.out.println(name + " received a message from " + sender.getName() + ": " + message);
     }
 
@@ -23,12 +23,12 @@ class User {
     }
 }
 
-class ConcreteMessage implements Command {
-    private User sender;
-    private User recipient;
+class ConcreteMessage implements Commandd {
+    private User1 sender;
+    private User1 recipient;
     private String message;
 
-    public ConcreteMessage(User sender, User recipient, String message) {
+    public ConcreteMessage(User1 sender, User1 recipient, String message) {
         this.sender = sender;
         this.recipient = recipient;
         this.message = message;
@@ -41,9 +41,9 @@ class ConcreteMessage implements Command {
 }
 
 class ChatInvoker {
-    private Command command;
+    private Commandd command;
 
-    public void setCommand(Command command) {
+    public void setCommand(Commandd command) {
         this.command = command;
     }
 
@@ -56,26 +56,26 @@ class ChatInvoker {
     }
 }
 
-public class CommandPattern {
+public class CommanddPattern {
     public static void main(String[] args) {
        
-        User ayet = new User("ayet");
-        User narimane = new User("narimane");
-        User oumaima = new User("oumaima");
+        User1 ayet = new User1("ayet");
+        User1 narimane = new User1("narimane");
+        User1 oumaima = new User1("oumaima");
 
        
         ChatInvoker chatInvoker = new ChatInvoker();
 
-        Command command1 = new ConcreteMessage(ayet, narimane, "Hi narimane!");
-        chatInvoker.setCommand(command1);
+        Commandd commandd1 = new ConcreteMessage(ayet, narimane, "Hi narimane!");
+        chatInvoker.setCommand(commandd1);
         chatInvoker.executeCommand();
 
-        Command command2 = new ConcreteMessage(narimane, ayet, "Hello ayet!");
-        chatInvoker.setCommand(command2);
+        Commandd Commandd2 = new ConcreteMessage(narimane, ayet, "Hello ayet!");
+        chatInvoker.setCommand(Commandd2);
         chatInvoker.executeCommand();
 
-        Command command3 = new ConcreteMessage(oumaima, ayet, "Good morning, ayet!");
-        chatInvoker.setCommand(command3);
+        Commandd Commandd3 = new ConcreteMessage(oumaima, ayet, "Good morning, ayet!");
+        chatInvoker.setCommand(Commandd3);
         chatInvoker.executeCommand();
     }
 }
